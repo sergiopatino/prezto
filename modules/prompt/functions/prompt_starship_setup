@@ -1,0 +1,2 @@
+# Added from https://github.com/sorin-ionescu/prezto/issues/1887
+eval "$(starship init zsh)"
