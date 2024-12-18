@@ -21,6 +21,7 @@ source <(fzf --zsh)
 
 # ASDF
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+. ~/.asdf/plugins/golang/set-env.zsh
 
 # Setup zoxide for smart cd
 eval "$(zoxide init zsh)"
