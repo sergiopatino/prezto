@@ -27,6 +27,11 @@ if (( $+commands[asdf] )); then
   . ~/.asdf/plugins/golang/set-env.zsh
 fi
 
+# If snap exists add to PATH
+if test -d /snap/bin; then
+  export PATH="/snap/bin:$PATH"
+fi
+
 # Setup zoxide for smart cd
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
