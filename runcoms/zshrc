@@ -14,17 +14,21 @@ fi
 
 # Needed to make Starship prompt work.
 # https://github.com/sorin-ionescu/prezto/issues/1887
-setopt prompt_subst interactive_comments
+# setopt prompt_subst interactive_comments
 
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+fi
 
 # ASDF
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 . ~/.asdf/plugins/golang/set-env.zsh
 
 # Setup zoxide for smart cd
-eval "$(zoxide init zsh)"
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
 
 # Aliases
 alias reload="exec zsh"
