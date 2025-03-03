@@ -22,8 +22,10 @@ if (( $+commands[fzf] )); then
 fi
 
 # ASDF
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-. ~/.asdf/plugins/golang/set-env.zsh
+if (( $+commands[asdf] )); then
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+  . ~/.asdf/plugins/golang/set-env.zsh
+fi
 
 # Setup zoxide for smart cd
 if (( $+commands[zoxide] )); then
