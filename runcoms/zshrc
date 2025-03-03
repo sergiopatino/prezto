@@ -23,11 +23,7 @@ setopt prompt_subst interactive_comments
 
 # Set up fzf key bindings and fuzzy completion
 if (( $+commands[fzf] )); then
-  if [[ $OS = "Darwin" ]]; then
     source <(fzf --zsh)
-  else
-    source <(fzf)
-  fi
 fi
 
 # ASDF
