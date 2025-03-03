@@ -14,7 +14,7 @@ fi
 
 # Needed to make Starship prompt work.
 # https://github.com/sorin-ionescu/prezto/issues/1887
-# setopt prompt_subst interactive_comments
+setopt prompt_subst interactive_comments
 
 # Set up fzf key bindings and fuzzy completion
 if (( $+commands[fzf] )); then
