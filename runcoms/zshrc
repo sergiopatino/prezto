@@ -12,6 +12,11 @@ fi
 
 # Customize to your needs...
 
+# If snap exists add to PATH
+if [ -d /snap/bin ]; then
+  export PATH="/snap/bin:$PATH"
+fi
+
 # Needed to make Starship prompt work.
 # https://github.com/sorin-ionescu/prezto/issues/1887
 setopt prompt_subst interactive_comments
@@ -25,11 +30,6 @@ fi
 if (( $+commands[asdf] )); then
   export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
   . ~/.asdf/plugins/golang/set-env.zsh
-fi
-
-# If snap exists add to PATH
-if test -d /snap/bin; then
-  export PATH="/snap/bin:$PATH"
 fi
 
 # Setup zoxide for smart cd
