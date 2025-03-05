@@ -5,11 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# If snap exists add to PATH
-if [ -d /snap/bin ]; then
-  export PATH="/snap/bin:$PATH"
-fi
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -29,7 +24,10 @@ fi
 # ASDF
 if (( $+commands[asdf] )); then
   export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-  . ~/.asdf/plugins/golang/set-env.zsh
+  if [[ -n ~/.asdf/plugins/golang/set-env.zsh ]]; then
+    . ~/.asdf/plugins/golang/set-env.zsh
+    export PATH="$GOBIN:$PATH"
+  fi
 fi
 
 # Setup zoxide for smart cd
