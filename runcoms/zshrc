@@ -74,3 +74,8 @@ alias c="cd"
 
 # Make dir
 alias md='mkdir -p'
+
+# Source splunk settings if they exist
+if [[ -f ~/.splunkrc ]]; then
+  source ~/.splunkrc
+;fi
