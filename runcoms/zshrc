@@ -79,3 +79,8 @@ alias md='mkdir -p'
 if [[ -f ~/.splunkrc ]]; then
   source ~/.splunkrc
 ;fi
+
+# Obsidian CLI
+if [[ -d "/Applications/Obsidian.app/Contents/MacOS" ]]; then
+  export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+fi
