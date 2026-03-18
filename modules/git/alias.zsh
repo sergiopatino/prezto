@@ -30,7 +30,15 @@ if ! zstyle -t ':prezto:module:git:alias' skip; then
   alias g='git'
 
   # Branch (b)
-  alias gb='git branch'
+  # Interactive branch selector with fzf — checks out selected branch
+  gb() {
+    git branch --sort=-committerdate \
+      | fzf --height=40% --reverse --border \
+            --preview 'git log --oneline --color=always -15 $(echo {} | sed "s/^[* ]*//" | cut -d" " -f1)' \
+            --preview-window=right:50% \
+      | sed 's/^[* ]*//' | cut -d' ' -f1 \
+      | xargs -r git checkout
+  }
   alias gba='git branch --all --verbose'
   alias gbc='git checkout -b'
   alias gbd='git branch --delete'

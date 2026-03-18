@@ -75,10 +75,25 @@ alias c="cd"
 # Make dir
 alias md='mkdir -p'
 
+# Export env vars from files in ~/.crypt/ (FILENAME=contents)
+crypt-creds() {
+  local crypt_dir="$HOME/.crypt"
+  if [[ ! -d "$crypt_dir" ]]; then
+    echo "~/.crypt directory not found"
+    return 1
+  fi
+  for file in "$crypt_dir"/*; do
+    [[ -f "$file" ]] || continue
+    local var_name="$(basename "$file")"
+    export "$var_name"="$(< "$file")"
+  done
+}
+crypt-creds
+
 # Source splunk settings if they exist
 if [[ -f ~/.splunkrc ]]; then
   source ~/.splunkrc
-;fi
+fi
 
 # Obsidian CLI
 if [[ -d "/Applications/Obsidian.app/Contents/MacOS" ]]; then
