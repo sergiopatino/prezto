@@ -31,6 +31,7 @@ if (( $+commands[asdf] )); then
   if [[ -n ~/.asdf/plugins/golang/set-env.zsh ]]; then
     . ~/.asdf/plugins/golang/set-env.zsh
     export PATH="$GOBIN:$PATH"
+    export GOTOOLCHAIN=local
   fi
 fi
 
@@ -79,6 +80,10 @@ alias c="cd"
 
 # Make dir
 alias md='mkdir -p'
+
+# Podman as Docker drop-in replacement
+alias docker=podman
+alias docker-compose='podman-compose'
 
 # Export env vars from files in ~/.crypt/ (FILENAME=contents)
 crypt-creds() {
